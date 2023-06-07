@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function getYear(date) {
 	if (!date) {
 		return 'N/A';
@@ -12,4 +14,12 @@ export function sliceMovies(movies, limit) {
 	}
 
 	return movies.slice(0, limit);
+}
+
+export function lazyImport(factory, name) {
+	return Object.create({
+		[name]: React.lazy(() =>
+			factory().then((module) => ({ default: module[name] }))
+		),
+	});
 }
