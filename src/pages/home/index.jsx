@@ -4,7 +4,7 @@ import { useGetPopularMoviesQuery } from '@/app/services/movies';
 import { MovieList } from '@/components';
 
 export function Home() {
-	const { data } = useGetPopularMoviesQuery();
+	const { data } = useGetPopularMoviesQuery({ page: 1 });
 
 	const popularMovies = data?.results ?? [];
 
