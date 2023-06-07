@@ -3,7 +3,7 @@ import React from 'react';
 import { useGetPopularMoviesQuery } from '@/app/services/movies';
 import { MovieList } from '@/components';
 
-const Home = () => {
+export function Home() {
 	const { data } = useGetPopularMoviesQuery();
 
 	const popularMovies = data?.results ?? [];
@@ -19,6 +19,4 @@ const Home = () => {
 			</section>
 		</React.Fragment>
 	);
-};
-
-export default Home;
+}
