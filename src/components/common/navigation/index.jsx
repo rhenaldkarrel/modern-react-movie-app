@@ -1,6 +1,6 @@
 import { BsFillTvFill, BsFillHouseDoorFill } from 'react-icons/bs';
 import { MdMovieCreation } from 'react-icons/md';
-import NavItem from './NavItem';
+import NavItem from './nav-item';
 
 export function Navigation() {
 	return (
