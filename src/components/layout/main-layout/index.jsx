@@ -16,7 +16,7 @@ export function MainLayout() {
 		<React.Fragment>
 			<Navigation />
 			<React.Suspense fallback={<FallbackSpinner />}>
-				<main className="lg:min-w-[800px] lg:ml-32 mx-6 mt-6 md:mt-0 lg:mx-0 lg:py-6">
+				<main className="lg:min-w-[800px] lg:ml-32 mx-6 mt-6 md:mt-0 lg:mx-0 lg:py-6 lg:pr-6">
 					<Outlet />
 				</main>
 			</React.Suspense>
