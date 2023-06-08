@@ -1,10 +1,13 @@
 import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { MovieCard } from '../movie-card';
+import 'swiper/css';
+
+import { MovieCard, TrendingMovieCard } from '../movie-card';
 import { Heading } from './heading';
 import { sliceMovies } from '@/utils/helpers';
 
-export function MovieList({ movies, title, href, limit = 10 }) {
+function BaseMovieList({ movies, title, href, limit = 10 }) {
 	return (
 		<React.Fragment>
 			<Heading title={title} href={href} />
@@ -14,5 +17,44 @@ export function MovieList({ movies, title, href, limit = 10 }) {
 				))}
 			</div>
 		</React.Fragment>
+	);
+}
+
+function TrendingMovieList({ movies, title, href, limit = 10 }) {
+	return (
+		<React.Fragment>
+			<Heading title={title} href={href} />
+			<Swiper
+				spaceBetween={30}
+				breakpoints={{
+					0: {
+						slidesPerView: 1,
+					},
+					400: {
+						slidesPerView: 2,
+					},
+					639: {
+						slidesPerView: 3,
+					},
+					865: {
+						slidesPerView: 4,
+					},
+				}}
+			>
+				{sliceMovies(movies, limit).map((movie) => (
+					<SwiperSlide key={movie.id}>
+						<TrendingMovieCard movie={movie} />
+					</SwiperSlide>
+				))}
+			</Swiper>
+		</React.Fragment>
+	);
+}
+
+export function MovieList({ isTrending = false, ...rest }) {
+	return isTrending ? (
+		<TrendingMovieList {...rest} />
+	) : (
+		<BaseMovieList {...rest} />
 	);
 }
