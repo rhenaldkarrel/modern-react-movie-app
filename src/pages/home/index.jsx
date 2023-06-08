@@ -4,6 +4,7 @@ import {
 	useGetNowPlayingMoviesQuery,
 	useGetPopularMoviesQuery,
 	useGetTopRatedMoviesQuery,
+	useGetTrendingMoviesQuery,
 	useGetUpcomingMoviesQuery,
 } from '@/app/services/movies';
 import { MovieList } from '@/components';
@@ -19,15 +20,27 @@ export function Home() {
 	const { data: upcomingMoviesData } = useGetUpcomingMoviesQuery({
 		page: 1,
 	});
+	const { data: trendingMoviesData } = useGetTrendingMoviesQuery({
+		page: 1,
+	});
 
 	const popularMovies = popularMoviesData?.results ?? [];
 	const nowPlayingMovies = nowPlayingMoviesData?.results ?? [];
 	const topRatedMovies = topRatedMoviesData?.results ?? [];
 	const upcomingMovies = upcomingMoviesData?.results ?? [];
+	const trendingMovies = trendingMoviesData?.results ?? [];
 
 	return (
 		<React.Fragment>
 			<div className="space-y-12">
+				<section>
+					<MovieList
+						isTrending
+						movies={trendingMovies}
+						title="trending movies"
+						href="/movie/trending"
+					/>
+				</section>
 				<section className="now-playing-movies">
 					<MovieList
 						movies={nowPlayingMovies}
