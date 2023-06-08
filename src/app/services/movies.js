@@ -175,12 +175,12 @@ export const moviesApi = tmdbApi.injectEndpoints({
 		}),
 		getMoviesByGenre: build.query({
 			query: (arg) => {
-				const { with_genre, page } = arg;
+				const { with_genres, page } = arg;
 
 				return {
 					url: 'discover/movie',
 					params: {
-						with_genre,
+						with_genres,
 						page,
 					},
 				};

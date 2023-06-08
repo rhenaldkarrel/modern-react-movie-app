@@ -13,7 +13,7 @@ export function GenreMovieList() {
 	const [page, setPage] = React.useState(1);
 
 	const { data, isFetching } = useGetMoviesByGenreQuery({
-		with_genre: id,
+		with_genres: id,
 		page,
 	});
 
