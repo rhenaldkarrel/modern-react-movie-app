@@ -5,6 +5,10 @@ import { lazyImport } from '@/utils/helpers';
 
 const { Home } = lazyImport(() => import('@/pages'), 'Home');
 const { MoviePopular } = lazyImport(() => import('@/pages'), 'MoviePopular');
+const { MovieNowPlaying } = lazyImport(
+	() => import('@/pages'),
+	'MovieNowPlaying'
+);
 
 const router = createBrowserRouter([
 	{
@@ -18,6 +22,10 @@ const router = createBrowserRouter([
 			{
 				path: '/movie/popular',
 				element: <MoviePopular />,
+			},
+			{
+				path: '/movie/now_playing',
+				element: <MovieNowPlaying />,
 			},
 			{ path: '*', element: <Navigate to="." /> },
 		],
