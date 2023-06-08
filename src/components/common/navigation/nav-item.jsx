@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 
-const NavItem = ({ children, to, label, className }) => {
+const NavItem = ({ children, to, label, className, ...rest }) => {
 	return (
 		<NavLink
 			to={to}
@@ -12,6 +12,7 @@ const NavItem = ({ children, to, label, className }) => {
 					className
 				)
 			}
+			{...rest}
 		>
 			{children}
 			<span className="hidden sm:block capitalize">{label}</span>
