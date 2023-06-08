@@ -7,3 +7,4 @@ export * from './movie/upcoming';
 export * from './movie/detail';
 export * from './movie/trending';
 export * from './movie/search';
+export * from './movie/genres';
