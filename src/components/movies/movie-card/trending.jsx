@@ -23,7 +23,7 @@ export function TrendingMovieCard({ movie }) {
 					{getYear(movie.release_date)} <span>•</span>
 					<span className="flex items-center gap-1">
 						<BsFillStarFill className="text-yellow-400" />
-						{movie.vote_average}
+						{movie.vote_average.toFixed(1)}
 					</span>
 				</p>
 				<h3 className="font-medium truncate text-lg">{movie.original_title}</h3>
