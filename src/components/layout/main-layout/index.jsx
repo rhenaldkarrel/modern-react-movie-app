@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 import { Navigation, Spinner } from '@/components';
 
@@ -12,6 +12,12 @@ function FallbackSpinner() {
 }
 
 export function MainLayout() {
+	const { pathname } = useLocation();
+
+	React.useEffect(() => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}, [pathname]);
+
 	return (
 		<React.Fragment>
 			<Navigation />
