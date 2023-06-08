@@ -15,6 +15,10 @@ const { MovieDetail } = lazyImport(() => import('@/pages'), 'MovieDetail');
 const { MovieTrending } = lazyImport(() => import('@/pages'), 'MovieTrending');
 const { MovieSearch } = lazyImport(() => import('@/pages'), 'MovieSearch');
 const { MovieGenres } = lazyImport(() => import('@/pages'), 'MovieGenres');
+const { GenreMovieList } = lazyImport(
+	() => import('@/pages'),
+	'GenreMovieList'
+);
 
 const router = createBrowserRouter([
 	{
@@ -56,6 +60,10 @@ const router = createBrowserRouter([
 			{
 				path: '/movie/genre',
 				element: <MovieGenres />,
+			},
+			{
+				path: '/movie/genre/:id',
+				element: <GenreMovieList />,
 			},
 			{ path: '*', element: <Navigate to="." /> },
 		],
