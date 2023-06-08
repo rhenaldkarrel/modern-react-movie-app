@@ -9,7 +9,6 @@ export function MovieCard({ movie }) {
 			to={`/movie/${movie.id}`}
 			className="movie-card group relative cursor-pointer transition-all space-y-2 flex flex-col"
 			title={movie.title}
-			key={movie.id}
 		>
 			<div className="movie-poster overflow-hidden rounded-lg grow">
 				<img
