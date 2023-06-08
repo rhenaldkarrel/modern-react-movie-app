@@ -4,6 +4,7 @@ import { ThemeSupa } from '@supabase/auth-ui-shared';
 
 import { supabaseClient } from '@/utils/constants/supabase';
 import { useAuth } from '@/hooks';
+import { getURL } from '@/utils/helpers';
 
 export function Login() {
 	const { user } = useAuth();
@@ -18,6 +19,7 @@ export function Login() {
 				supabaseClient={supabaseClient}
 				appearance={{ theme: ThemeSupa }}
 				providers={['google']}
+				redirectTo={getURL()}
 			/>
 		</div>
 	);

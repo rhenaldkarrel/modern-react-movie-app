@@ -44,3 +44,13 @@ export function getMovieLength(runtime) {
 export function numberWithCommas(num) {
 	return num ? num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : 0;
 }
+
+export function getURL() {
+	let url =
+		import.meta.env.VITE_SITE_URL ??
+		import.meta.env.VITE_VERCEL_URL ??
+		'http://localhost:5173/';
+	url = url.includes('http') ? url : `https://${url}`;
+	url = url.endsWith('/') ? url : `${url}/`;
+	return url;
+}
