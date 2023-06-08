@@ -17,7 +17,11 @@ export const moviesApi = tmdbApi.injectEndpoints({
 				return endpointName;
 			},
 			merge: (currentCache, newItems) => {
-				currentCache.results.push(...newItems.results);
+				if (newItems.page > 1) {
+					currentCache.results.push(...newItems.results);
+					return;
+				}
+				return newItems;
 			},
 			forceRefetch({ currentArg, previousArg }) {
 				return currentArg !== previousArg;
@@ -39,7 +43,11 @@ export const moviesApi = tmdbApi.injectEndpoints({
 				return endpointName;
 			},
 			merge: (currentCache, newItems) => {
-				currentCache.results.push(...newItems.results);
+				if (newItems.page > 1) {
+					currentCache.results.push(...newItems.results);
+					return;
+				}
+				return newItems;
 			},
 			forceRefetch({ currentArg, previousArg }) {
 				return currentArg !== previousArg;
@@ -61,7 +69,11 @@ export const moviesApi = tmdbApi.injectEndpoints({
 				return endpointName;
 			},
 			merge: (currentCache, newItems) => {
-				currentCache.results.push(...newItems.results);
+				if (newItems.page > 1) {
+					currentCache.results.push(...newItems.results);
+					return;
+				}
+				return newItems;
 			},
 			forceRefetch({ currentArg, previousArg }) {
 				return currentArg !== previousArg;
@@ -83,7 +95,11 @@ export const moviesApi = tmdbApi.injectEndpoints({
 				return endpointName;
 			},
 			merge: (currentCache, newItems) => {
-				currentCache.results.push(...newItems.results);
+				if (newItems.page > 1) {
+					currentCache.results.push(...newItems.results);
+					return;
+				}
+				return newItems;
 			},
 			forceRefetch({ currentArg, previousArg }) {
 				return currentArg !== previousArg;
@@ -119,7 +135,11 @@ export const moviesApi = tmdbApi.injectEndpoints({
 				return endpointName;
 			},
 			merge: (currentCache, newItems) => {
-				currentCache.results.push(...newItems.results);
+				if (newItems.page > 1) {
+					currentCache.results.push(...newItems.results);
+					return;
+				}
+				return newItems;
 			},
 			forceRefetch({ currentArg, previousArg }) {
 				return currentArg !== previousArg;
