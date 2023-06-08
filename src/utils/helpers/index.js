@@ -1,4 +1,5 @@
 import React from 'react';
+import { TMDB_IMAGE_BASE_URL } from '../constants/tmdb';
 
 export function getYear(date) {
 	if (!date) {
@@ -22,4 +23,24 @@ export function lazyImport(factory, name) {
 			factory().then((module) => ({ default: module[name] }))
 		),
 	});
+}
+
+export function getMoviePoster(src) {
+	if (src) {
+		return TMDB_IMAGE_BASE_URL + src;
+	}
+
+	return '/img-placeholder.jpg';
+}
+
+export function getMovieLength(runtime) {
+	if (runtime !== 0 && runtime !== undefined) {
+		return runtime + ' min.';
+	} else {
+		return 'N/A';
+	}
+}
+
+export function numberWithCommas(num) {
+	return num ? num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : 0;
 }
