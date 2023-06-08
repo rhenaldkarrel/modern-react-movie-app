@@ -46,8 +46,33 @@ export const moviesApi = tmdbApi.injectEndpoints({
 			},
 			providesTags: ['NowPlayingMovies'],
 		}),
+		getTopRatedMovies: build.query({
+			query: (arg) => {
+				const { page } = arg;
+
+				return {
+					url: 'movie/top_rated',
+					params: {
+						page,
+					},
+				};
+			},
+			serializeQueryArgs: ({ endpointName }) => {
+				return endpointName;
+			},
+			merge: (currentCache, newItems) => {
+				currentCache.results.push(...newItems.results);
+			},
+			forceRefetch({ currentArg, previousArg }) {
+				return currentArg !== previousArg;
+			},
+			providesTags: ['TopRatedMovies'],
+		}),
 	}),
 });
 
-export const { useGetPopularMoviesQuery, useGetNowPlayingMoviesQuery } =
-	moviesApi;
+export const {
+	useGetPopularMoviesQuery,
+	useGetNowPlayingMoviesQuery,
+	useGetTopRatedMoviesQuery,
+} = moviesApi;
