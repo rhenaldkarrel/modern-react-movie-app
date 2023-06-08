@@ -14,10 +14,10 @@ export function AvatarDropdown({ openProfileMenu, setOpenProfileMenu }) {
 	});
 
 	return (
-		<div className="relative" ref={dropdownRef}>
+		<div className="relative pr-4 sm:pr-8 lg:pr-0" ref={dropdownRef}>
 			<img
 				type="button"
-				className="w-10 h-10 rounded-full cursor-pointer"
+				className="max-w-[40px] w-full rounded-full cursor-pointer"
 				src={user.user_metadata.avatar_url ?? '/avatar-placeholder.png'}
 				alt="User dropdown"
 				onClick={() => setOpenProfileMenu(!openProfileMenu)}
