@@ -1,14 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 
-const NavItem = ({ children, to, label }) => {
+const NavItem = ({ children, to, label, className }) => {
 	return (
 		<NavLink
 			to={to}
 			className={({ isActive }) =>
 				clsx(
 					'flex items-center gap-2 transition-all rounded-lg hover:bg-gray-50 hover:text-black p-8',
-					{ 'text-indigo-600': isActive }
+					{ 'text-indigo-600': isActive },
+					className
 				)
 			}
 		>
