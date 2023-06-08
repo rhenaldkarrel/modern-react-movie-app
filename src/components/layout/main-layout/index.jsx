@@ -1,7 +1,12 @@
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 
-import { Navigation, SearchMovieForm, Spinner } from '@/components';
+import {
+	Navigation,
+	ScrollToTop,
+	SearchMovieForm,
+	Spinner,
+} from '@/components';
 import { useAuth } from '@/hooks';
 
 function FallbackSpinner() {
@@ -23,6 +28,7 @@ export function MainLayout() {
 	return (
 		<React.Fragment>
 			<Navigation />
+			<ScrollToTop />
 			<React.Suspense fallback={<FallbackSpinner />}>
 				<main className="lg:min-w-[800px] px-6">
 					{user && (
