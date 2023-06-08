@@ -146,6 +146,33 @@ export const moviesApi = tmdbApi.injectEndpoints({
 			},
 			providesTags: ['Movies'],
 		}),
+		getMoviesByQuery: build.query({
+			query: (arg) => {
+				const { page, query } = arg;
+
+				return {
+					url: 'search/movie',
+					params: {
+						page,
+						query,
+					},
+				};
+			},
+			serializeQueryArgs: ({ endpointName }) => {
+				return endpointName;
+			},
+			merge: (currentCache, newItems) => {
+				if (newItems.page > 1) {
+					currentCache.results.push(...newItems.results);
+					return;
+				}
+				return newItems;
+			},
+			forceRefetch({ currentArg, previousArg }) {
+				return currentArg !== previousArg;
+			},
+			providesTags: ['Movies'],
+		}),
 	}),
 });
 
@@ -156,4 +183,5 @@ export const {
 	useGetUpcomingMoviesQuery,
 	useGetMovieDetailQuery,
 	useGetTrendingMoviesQuery,
+	useGetMoviesByQueryQuery,
 } = moviesApi;
