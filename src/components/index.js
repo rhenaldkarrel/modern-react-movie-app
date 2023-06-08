@@ -8,3 +8,4 @@ export * from './layout/main-layout';
 export * from './movies/movie-card';
 export * from './movies/movie-list';
 export * from './movies/movie-detail-information';
+export * from './movies/search-form';
