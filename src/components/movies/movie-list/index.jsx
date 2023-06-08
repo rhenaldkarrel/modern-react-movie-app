@@ -25,6 +25,8 @@ function TrendingMovieList({ movies, title, href, limit = 10 }) {
 		<React.Fragment>
 			<Heading title={title} href={href} />
 			<Swiper
+				touchEventsTarget="container"
+				className="cursor-grab"
 				spaceBetween={30}
 				breakpoints={{
 					0: {
