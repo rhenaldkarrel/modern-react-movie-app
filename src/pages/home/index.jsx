@@ -1,22 +1,38 @@
 import React from 'react';
 
-import { useGetPopularMoviesQuery } from '@/app/services/movies';
+import {
+	useGetNowPlayingMoviesQuery,
+	useGetPopularMoviesQuery,
+} from '@/app/services/movies';
 import { MovieList } from '@/components';
 
 export function Home() {
-	const { data } = useGetPopularMoviesQuery({ page: 1 });
+	const { data: popularMoviesData } = useGetPopularMoviesQuery({ page: 1 });
+	const { data: nowPlayingMoviesData } = useGetNowPlayingMoviesQuery({
+		page: 1,
+	});
 
-	const popularMovies = data?.results ?? [];
+	const popularMovies = popularMoviesData?.results ?? [];
+	const nowPlayingMovies = nowPlayingMoviesData?.results ?? [];
 
 	return (
 		<React.Fragment>
-			<section className="popular-movies">
-				<MovieList
-					movies={popularMovies}
-					title="popular movies"
-					href="/movie/popular"
-				/>
-			</section>
+			<div className="space-y-12">
+				<section className="now-playing-movies">
+					<MovieList
+						movies={nowPlayingMovies}
+						title="now playing movies"
+						href="/movie/now_playing"
+					/>
+				</section>
+				<section className="popular-movies">
+					<MovieList
+						movies={popularMovies}
+						title="popular movies"
+						href="/movie/popular"
+					/>
+				</section>
+			</div>
 		</React.Fragment>
 	);
 }
