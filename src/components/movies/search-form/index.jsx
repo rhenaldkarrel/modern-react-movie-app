@@ -1,6 +1,20 @@
+import React from 'react';
+
+import { useNavigateSearch } from '@/hooks';
+
 export function SearchMovieForm() {
+	const [query, setQuery] = React.useState('');
+
+	const navigateSearch = useNavigateSearch();
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		navigateSearch('/movie/search', { query });
+	};
+
 	return (
-		<form>
+		<form onSubmit={handleSubmit}>
 			<label
 				htmlFor="search-movies"
 				className="mb-2 text-sm font-medium sr-only"
@@ -30,7 +44,10 @@ export function SearchMovieForm() {
 					id="search-movies"
 					className="block w-full p-4 pl-10 text-sm rounded-lg bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
 					placeholder="Search Movies..."
+					value={query}
+					onChange={(e) => setQuery(e.target.value)}
 					required
+					autoComplete="off"
 				/>
 				<button
 					type="submit"
