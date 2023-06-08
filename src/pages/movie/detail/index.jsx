@@ -1,10 +1,17 @@
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { useGetMovieDetailQuery } from '@/app/services/movies';
-import { MovieDetailInformation, MovieList, Spinner } from '@/components';
+import {
+	MovieDetailInformation,
+	MovieList,
+	PrimaryOutlinedButton,
+	Spinner,
+} from '@/components';
 
 export function MovieDetail() {
 	const { id } = useParams();
+	const navigate = useNavigate();
 
 	const { data: movie, isLoading } = useGetMovieDetailQuery({
 		id,
@@ -22,11 +29,16 @@ export function MovieDetail() {
 	}
 
 	return (
-		<div className="space-y-4 sm:space-y-14">
-			<MovieDetailInformation movie={movie} />
-			<section className="similar-movies">
-				<MovieList movies={similarMovies} limit={0} title="similar movies" />
-			</section>
-		</div>
+		<React.Fragment>
+			<PrimaryOutlinedButton onClick={() => navigate(-1, { replace: true })}>
+				Back
+			</PrimaryOutlinedButton>
+			<div className="space-y-4 sm:space-y-14">
+				<MovieDetailInformation movie={movie} />
+				<section className="similar-movies">
+					<MovieList movies={similarMovies} limit={0} title="similar movies" />
+				</section>
+			</div>
+		</React.Fragment>
 	);
 }
