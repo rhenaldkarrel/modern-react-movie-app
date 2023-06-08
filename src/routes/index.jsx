@@ -30,40 +30,50 @@ const router = createBrowserRouter([
 				element: <Home />,
 			},
 			{
-				path: '/movie/:id',
-				element: <MovieDetail />,
-			},
-			{
-				path: '/movie/popular',
-				element: <MoviePopular />,
-			},
-			{
-				path: '/movie/now_playing',
-				element: <MovieNowPlaying />,
-			},
-			{
-				path: '/movie/top_rated',
-				element: <MovieTopRated />,
-			},
-			{
-				path: '/movie/upcoming',
-				element: <MovieUpcoming />,
-			},
-			{
-				path: '/movie/trending',
-				element: <MovieTrending />,
-			},
-			{
-				path: '/movie/search',
-				element: <MovieSearch />,
-			},
-			{
-				path: '/movie/genre',
-				element: <MovieGenres />,
-			},
-			{
-				path: '/movie/genre/:id',
-				element: <GenreMovieList />,
+				path: '/movie',
+				children: [
+					{
+						path: ':id',
+						element: <MovieDetail />,
+					},
+					{
+						path: 'popular',
+						element: <MoviePopular />,
+					},
+					{
+						path: 'now_playing',
+						element: <MovieNowPlaying />,
+					},
+					{
+						path: 'top_rated',
+						element: <MovieTopRated />,
+					},
+					{
+						path: 'upcoming',
+						element: <MovieUpcoming />,
+					},
+					{
+						path: 'trending',
+						element: <MovieTrending />,
+					},
+					{
+						path: 'search',
+						element: <MovieSearch />,
+					},
+					{
+						path: 'genre',
+						children: [
+							{
+								index: true,
+								element: <MovieGenres />,
+							},
+							{
+								path: ':id',
+								element: <GenreMovieList />,
+							},
+						],
+					},
+				],
 			},
 			{ path: '*', element: <Navigate to="." /> },
 		],
