@@ -26,7 +26,7 @@ export const moviesApi = tmdbApi.injectEndpoints({
 			forceRefetch({ currentArg, previousArg }) {
 				return currentArg !== previousArg;
 			},
-			providesTags: ['PopularMovies'],
+			providesTags: ['Movies'],
 		}),
 		getNowPlayingMovies: build.query({
 			query: (arg) => {
@@ -52,7 +52,7 @@ export const moviesApi = tmdbApi.injectEndpoints({
 			forceRefetch({ currentArg, previousArg }) {
 				return currentArg !== previousArg;
 			},
-			providesTags: ['NowPlayingMovies'],
+			providesTags: ['Movies'],
 		}),
 		getTopRatedMovies: build.query({
 			query: (arg) => {
@@ -78,7 +78,7 @@ export const moviesApi = tmdbApi.injectEndpoints({
 			forceRefetch({ currentArg, previousArg }) {
 				return currentArg !== previousArg;
 			},
-			providesTags: ['TopRatedMovies'],
+			providesTags: ['Movies'],
 		}),
 		getUpcomingMovies: build.query({
 			query: (arg) => {
@@ -104,7 +104,7 @@ export const moviesApi = tmdbApi.injectEndpoints({
 			forceRefetch({ currentArg, previousArg }) {
 				return currentArg !== previousArg;
 			},
-			providesTags: ['UpcomingMovies'],
+			providesTags: ['Movies'],
 		}),
 		getMovieDetail: build.query({
 			query: (arg) => {
@@ -118,7 +118,7 @@ export const moviesApi = tmdbApi.injectEndpoints({
 					},
 				};
 			},
-			providesTags: ['MovieDetail'],
+			providesTags: ['Movies'],
 		}),
 		getTrendingMovies: build.query({
 			query: (arg) => {
@@ -144,7 +144,7 @@ export const moviesApi = tmdbApi.injectEndpoints({
 			forceRefetch({ currentArg, previousArg }) {
 				return currentArg !== previousArg;
 			},
-			providesTags: ['TrendingMovies'],
+			providesTags: ['Movies'],
 		}),
 	}),
 });
