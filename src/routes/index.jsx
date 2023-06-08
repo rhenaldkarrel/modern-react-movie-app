@@ -4,6 +4,7 @@ import { MainLayout } from '@/components';
 import { lazyImport } from '@/utils/helpers';
 
 const { Home } = lazyImport(() => import('@/pages'), 'Home');
+const { Login } = lazyImport(() => import('@/pages'), 'Login');
 const { MoviePopular } = lazyImport(() => import('@/pages'), 'MoviePopular');
 const { MovieNowPlaying } = lazyImport(
 	() => import('@/pages'),
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
 			{
 				index: true,
 				element: <Home />,
+			},
+			{
+				path: 'login',
+				element: <Login />,
 			},
 			{
 				path: '/movie',
