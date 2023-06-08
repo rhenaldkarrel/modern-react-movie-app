@@ -7,7 +7,7 @@ const NavItem = ({ children, to, label, className, ...rest }) => {
 			to={to}
 			className={({ isActive }) =>
 				clsx(
-					'flex items-center gap-2 transition-all rounded-lg hover:bg-gray-50 hover:text-black p-8',
+					'flex items-center gap-2 transition-all rounded-lg hover:text-indigo-600 p-8',
 					{ 'text-indigo-600': isActive },
 					className
 				)
