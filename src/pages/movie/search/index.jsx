@@ -2,6 +2,7 @@ import React from 'react';
 import { useGetMoviesByQueryQuery } from '@/app/services/movies';
 import { useSearchParams } from 'react-router-dom';
 import { MovieList, Spinner } from '@/components';
+import { useInfiniteScroll } from '@/hooks';
 
 export function MovieSearch() {
 	const [searchParams] = useSearchParams();
@@ -15,22 +16,14 @@ export function MovieSearch() {
 	});
 
 	const searchedMovies = data?.results ?? [];
+	const totalPages = data?.total_pages;
 
-	React.useEffect(() => {
-		const onScroll = () => {
-			const scrolledToBottom =
-				window.innerHeight + window.scrollY >= document.body.offsetHeight;
-			if (scrolledToBottom && !isFetching) {
-				setPage(page + 1);
-			}
-		};
-
-		document.addEventListener('scroll', onScroll);
-
-		return function () {
-			document.removeEventListener('scroll', onScroll);
-		};
-	}, [page, isFetching]);
+	useInfiniteScroll({
+		isFetching,
+		totalPages,
+		page,
+		setPage,
+	});
 
 	return (
 		<React.Fragment>

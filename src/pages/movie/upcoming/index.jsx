@@ -2,28 +2,21 @@ import React from 'react';
 
 import { useGetUpcomingMoviesQuery } from '@/app/services/movies';
 import { MovieList, Spinner } from '@/components';
+import { useInfiniteScroll } from '@/hooks';
 
 export function MovieUpcoming() {
 	const [page, setPage] = React.useState(1);
 	const { data, isFetching } = useGetUpcomingMoviesQuery({ page });
 
 	const upcomingMovies = data?.results ?? [];
+	const totalPages = data?.total_pages;
 
-	React.useEffect(() => {
-		const onScroll = () => {
-			const scrolledToBottom =
-				window.innerHeight + window.scrollY >= document.body.offsetHeight;
-			if (scrolledToBottom && !isFetching) {
-				setPage(page + 1);
-			}
-		};
-
-		document.addEventListener('scroll', onScroll);
-
-		return function () {
-			document.removeEventListener('scroll', onScroll);
-		};
-	}, [page, isFetching]);
+	useInfiniteScroll({
+		isFetching,
+		totalPages,
+		page,
+		setPage,
+	});
 
 	return (
 		<React.Fragment>
