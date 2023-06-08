@@ -1,10 +1,11 @@
 import { BsFillHouseDoorFill, BsSearch } from 'react-icons/bs';
 import { MdMovieCreation } from 'react-icons/md';
+
 import NavItem from './nav-item';
 
 export function Navigation() {
 	return (
-		<nav className="sticky top-0 z-50 flex items-center justify-between lg:justify-start bg-slate-900 md:mx-6 md:mt-6 md:mb-[33px] md:rounded-[10px] lg:fixed lg:left-0 lg:mr-0 lg:flex-col text-white p-2">
+		<nav className="sticky top-0 z-50 flex items-center justify-between lg:justify-center bg-slate-900 mb-6 md:m-6 md:rounded-[10px] text-white">
 			<NavItem label="home" to="/">
 				<BsFillHouseDoorFill className="text-3xl" />
 			</NavItem>

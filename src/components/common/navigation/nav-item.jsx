@@ -7,13 +7,13 @@ const NavItem = ({ children, to, label }) => {
 			to={to}
 			className={({ isActive }) =>
 				clsx(
-					'flex items-center gap-2 transition-all rounded-lg hover:bg-gray-50 hover:text-black p-3 lg:py-7',
+					'flex items-center gap-2 transition-all rounded-lg hover:bg-gray-50 hover:text-black p-8',
 					{ 'text-indigo-600': isActive }
 				)
 			}
 		>
 			{children}
-			<span className="hidden sm:block lg:hidden capitalize">{label}</span>
+			<span className="hidden sm:block capitalize">{label}</span>
 		</NavLink>
 	);
 };
