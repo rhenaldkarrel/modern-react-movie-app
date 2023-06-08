@@ -90,6 +90,20 @@ export const moviesApi = tmdbApi.injectEndpoints({
 			},
 			providesTags: ['UpcomingMovies'],
 		}),
+		getMovieDetail: build.query({
+			query: (arg) => {
+				const { id, append_to_response } = arg;
+
+				return {
+					url: `movie/${id}`,
+					params: {
+						id,
+						append_to_response,
+					},
+				};
+			},
+			providesTags: ['MovieDetail'],
+		}),
 	}),
 });
 
@@ -98,4 +112,5 @@ export const {
 	useGetNowPlayingMoviesQuery,
 	useGetTopRatedMoviesQuery,
 	useGetUpcomingMoviesQuery,
+	useGetMovieDetailQuery,
 } = moviesApi;
