@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import { BsFillStarFill } from 'react-icons/bs';
 
-import { getYear } from '@/utils/helpers';
-import { TMDB_IMAGE_BASE_URL } from '@/utils/constants/tmdb';
+import { getMoviePoster, getYear } from '@/utils/helpers';
 
 export function MovieCard({ movie }) {
 	return (
@@ -14,11 +13,7 @@ export function MovieCard({ movie }) {
 		>
 			<div className="movie-poster overflow-hidden rounded-lg grow">
 				<img
-					src={
-						movie.poster_path
-							? TMDB_IMAGE_BASE_URL + movie.poster_path
-							: '/img-placeholder.jpg'
-					}
+					src={getMoviePoster(movie.poster_path)}
 					alt={movie.title}
 					className="aspect-[9 / 16] w-full h-full object-cover overflow-hidden sm:max-w-[250px] transition-all group-hover:scale-110"
 					loading="lazy"
