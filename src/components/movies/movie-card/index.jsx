@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { BsFillStarFill } from 'react-icons/bs';
 
 import { getYear } from '@/utils/helpers';
@@ -5,7 +6,8 @@ import { TMDB_IMAGE_BASE_URL } from '@/utils/constants/tmdb';
 
 export function MovieCard({ movie }) {
 	return (
-		<div
+		<Link
+			to={`/movie/${movie.id}`}
 			className="movie-card group relative cursor-pointer transition-all space-y-2 flex flex-col"
 			title={movie.title}
 			key={movie.id}
@@ -32,6 +34,6 @@ export function MovieCard({ movie }) {
 				</p>
 				<h3 className="font-medium truncate text-lg">{movie.original_title}</h3>
 			</div>
-		</div>
+		</Link>
 	);
 }
