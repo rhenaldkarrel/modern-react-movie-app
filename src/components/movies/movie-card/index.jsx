@@ -16,7 +16,11 @@ export function MovieCard({ movie }) {
 		>
 			<div className="overflow-hidden rounded-lg">
 				<img
-					src={TMDB_IMAGE_BASE_URL + movie.poster_path}
+					src={
+						movie.poster_path
+							? TMDB_IMAGE_BASE_URL + movie.poster_path
+							: '/img-placeholder.jpg'
+					}
 					alt={movie.title}
 					className="aspect-[9 / 16] w-full object-cover overflow-hidden sm:max-w-[250px] transition-all group-hover:scale-110"
 					loading="lazy"
