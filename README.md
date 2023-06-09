@@ -38,7 +38,11 @@
 ## How to Install
 
 1. Setup Supabase auth.
+    - Create account/login.
+    - Create new app to get the **project URL** and **anon key**.
+    - Enable Google provider (requires **client ID** and **client secret** from Google Cloud)
 2. Setup TMDB account.
+    - Get **API key/access token**.
 3. See `.env.example` and create your `.env` file. Fill it with the correct values.
 4. Run `pnpm install`
 5. Run `pnpm dev`
