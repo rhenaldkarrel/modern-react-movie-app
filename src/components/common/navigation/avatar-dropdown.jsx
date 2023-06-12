@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 
 import { useOutsideClick, useAuth } from '@/hooks';
+import { LazyImage } from '../lazy-load-image';
 
 export function AvatarDropdown({ openProfileMenu, setOpenProfileMenu }) {
 	const { user, signOut } = useAuth();
@@ -15,7 +16,7 @@ export function AvatarDropdown({ openProfileMenu, setOpenProfileMenu }) {
 
 	return (
 		<div className="relative pr-4 sm:pr-8 lg:pr-0" ref={dropdownRef}>
-			<img
+			<LazyImage
 				type="button"
 				className="max-w-[40px] w-full rounded-full cursor-pointer"
 				src={user.user_metadata.avatar_url ?? '/avatar-placeholder.png'}
