@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.lazy-load-image-background {
+	display: block !important;
+}
+
+.lazy-load-image-background > img {
+	transition-property: all !important;
+}
+
 @layer base {
 	body {
 		@apply bg-slate-800 text-slate-100 max-w-[87.5rem] mx-auto;
