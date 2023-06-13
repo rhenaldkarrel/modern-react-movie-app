@@ -1,33 +1,55 @@
 import { Link } from 'react-router-dom';
 import { BsFillStarFill } from 'react-icons/bs';
+import { MdOutlineFavoriteBorder, MdFavorite } from 'react-icons/md';
 
 import { getMoviePoster, getYear } from '@/utils/helpers';
 import { LazyImage } from '@/components';
+import { useFavorites } from '@/hooks';
 
 export function MovieCard({ movie }) {
+	const { isFavorite, addToFavorites } = useFavorites();
+
 	return (
-		<Link
-			to={`/movie/${movie.id}`}
-			className="movie-card group relative cursor-pointer transition-all space-y-2 flex flex-col"
-			title={movie.title}
-		>
-			<div className="movie-poster overflow-hidden rounded-lg grow">
-				<LazyImage
-					src={getMoviePoster(movie.poster_path)}
-					alt={movie.title}
-					className="aspect-[9 / 16] w-full h-full object-cover overflow-hidden sm:max-w-[250px] transition-all group-hover:scale-110"
-				/>
+		<div className="movie-card group relative cursor-pointer transition-all space-y-2 flex flex-col">
+			<div className="absolute top-0 right-0 z-[1]">
+				<button
+					type="button"
+					className="mr-4 mt-4 bg-slate-500 p-2 rounded-full transition-all hover:bg-slate-800"
+					onClick={() => addToFavorites(movie)}
+				>
+					{isFavorite(movie.id) ? (
+						<MdFavorite fill="red" />
+					) : (
+						<MdOutlineFavoriteBorder />
+					)}
+					<span className="sr-only">Add Movie to Favorite</span>
+				</button>
 			</div>
-			<div className="movie-information">
-				<p className="flex text-sm gap-2">
-					{getYear(movie.release_date)} <span>•</span>
-					<span className="flex items-center gap-1">
-						<BsFillStarFill className="text-yellow-400" />
-						{movie.vote_average.toFixed(1)}
-					</span>
-				</p>
-				<h3 className="font-medium truncate text-lg">{movie.original_title}</h3>
-			</div>
-		</Link>
+			<Link
+				to={`/movie/${movie.id}`}
+				className="movie-card-link"
+				title={movie.title}
+			>
+				<div className="movie-poster overflow-hidden rounded-lg grow">
+					<LazyImage
+						src={getMoviePoster(movie.poster_path)}
+						alt={movie.title}
+						className="aspect-[9 / 16] w-full h-full object-cover overflow-hidden sm:max-w-[250px] transition-all group-hover:scale-110"
+					/>
+				</div>
+				<div className="movie-information">
+					<p className="flex text-sm gap-2">
+						{getYear(movie.release_date)} <span>•</span>
+						<span className="flex items-center gap-1">
+							<BsFillStarFill className="text-yellow-400" />
+							{movie.vote_average.toFixed(1)}
+						</span>
+					</p>
+					<h3 className="font-medium truncate text-lg">
+						{movie.original_title}
+					</h3>
+				</div>
+			</Link>
+		</div>
 	);
 }
