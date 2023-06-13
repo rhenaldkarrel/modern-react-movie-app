@@ -1,28 +1,11 @@
-import { MdFavorite, MdOutlineFavoriteBorder } from 'react-icons/md';
-
 import { LazyImage } from '@/components';
-import { useFavorites } from '@/hooks';
 import { getMoviePoster } from '@/utils/helpers';
+import { FavoriteButton } from '../favorite-button';
 
 export function MoviePoster({ movie }) {
-	const { addToFavorites, isFavorite } = useFavorites();
-
 	return (
 		<div className="relative">
-			<div className="absolute top-0 right-0 z-[1]">
-				<button
-					type="button"
-					className="mr-4 mt-4 bg-slate-500 p-2 rounded-full transition-all hover:bg-slate-800"
-					onClick={() => addToFavorites(movie)}
-				>
-					{isFavorite(movie.id) ? (
-						<MdFavorite fill="red" />
-					) : (
-						<MdOutlineFavoriteBorder />
-					)}
-					<span className="sr-only">Add Movie to Favorite</span>
-				</button>
-			</div>
+			<FavoriteButton movie={movie} />
 			<LazyImage
 				src={getMoviePoster(movie.poster_path)}
 				alt={movie.title}

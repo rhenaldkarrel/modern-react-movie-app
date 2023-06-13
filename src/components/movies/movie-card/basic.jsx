@@ -1,30 +1,14 @@
 import { Link } from 'react-router-dom';
 import { BsFillStarFill } from 'react-icons/bs';
-import { MdOutlineFavoriteBorder, MdFavorite } from 'react-icons/md';
 
 import { getMoviePoster, getYear } from '@/utils/helpers';
 import { LazyImage } from '@/components';
-import { useFavorites } from '@/hooks';
+import { FavoriteButton } from '../favorite-button';
 
 export function MovieCard({ movie }) {
-	const { isFavorite, addToFavorites } = useFavorites();
-
 	return (
 		<div className="movie-card group relative cursor-pointer transition-all space-y-2 flex flex-col">
-			<div className="absolute top-0 right-0 z-[1]">
-				<button
-					type="button"
-					className="mr-4 mt-4 bg-slate-500 p-2 rounded-full transition-all hover:bg-slate-800"
-					onClick={() => addToFavorites(movie)}
-				>
-					{isFavorite(movie.id) ? (
-						<MdFavorite fill="red" />
-					) : (
-						<MdOutlineFavoriteBorder />
-					)}
-					<span className="sr-only">Add Movie to Favorite</span>
-				</button>
-			</div>
+			<FavoriteButton movie={movie} />
 			<Link
 				to={`/movie/${movie.id}`}
 				className="movie-card-link"
