@@ -37,14 +37,6 @@ export function AvatarDropdown({ openProfileMenu, setOpenProfileMenu }) {
 					<li>
 						<Link
 							to="#"
-							className="block px-4 py-2 hover:bg-gray-800 transition-all"
-						>
-							Favorite
-						</Link>
-					</li>
-					<li>
-						<Link
-							to="#"
 							onClick={signOut}
 							className="block px-4 py-2 hover:bg-gray-800 transition-all"
 						>
