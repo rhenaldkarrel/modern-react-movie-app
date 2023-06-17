@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { BsFillStarFill } from 'react-icons/bs';
 
-import { getMoviePoster, getYear } from '@/utils/helpers';
+import { getTmdbImage, getYear } from '@/utils/helpers';
 import { LazyImage } from '@/components';
 import { FavoriteButton } from '../favorite-button';
 
@@ -16,7 +16,7 @@ export function MovieCard({ movie }) {
 			>
 				<div className="movie-poster overflow-hidden rounded-lg grow">
 					<LazyImage
-						src={getMoviePoster(movie.poster_path)}
+						src={getTmdbImage(movie.poster_path)}
 						alt={movie.title}
 						className="aspect-[9 / 16] w-full h-full object-cover overflow-hidden transition-all group-hover:scale-110"
 						wrapperClassName="h-full"

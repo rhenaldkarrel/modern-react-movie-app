@@ -9,7 +9,7 @@ export function getYear(date) {
 	}
 }
 
-export function sliceMovies(movies, limit) {
+export function sliceArray(movies, limit) {
 	if (limit === 0) {
 		return movies;
 	}
@@ -25,7 +25,7 @@ export function lazyImport(factory, name) {
 	});
 }
 
-export function getMoviePoster(src) {
+export function getTmdbImage(src) {
 	if (src) {
 		return TMDB_IMAGE_BASE_URL + src;
 	}

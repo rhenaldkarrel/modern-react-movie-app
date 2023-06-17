@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { getMoviePoster, getYear } from '@/utils/helpers';
+import { getTmdbImage, getYear } from '@/utils/helpers';
 import { BsFillStarFill } from 'react-icons/bs';
 import { LazyImage } from '@/components';
 import { FavoriteButton } from '../favorite-button';
@@ -16,7 +16,7 @@ export function TrendingMovieCard({ movie }) {
 			>
 				<div className="movie-poster overflow-hidden rounded-lg grow">
 					<LazyImage
-						src={getMoviePoster(movie.backdrop_path)}
+						src={getTmdbImage(movie.backdrop_path)}
 						alt={movie.title}
 						className="aspect-video w-full h-full min-w-[300px] bg-center object-cover overflow-hidden transition-all group-hover:scale-110"
 					/>

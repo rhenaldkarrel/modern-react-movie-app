@@ -1,5 +1,5 @@
 import { LazyImage } from '@/components';
-import { getMoviePoster } from '@/utils/helpers';
+import { getTmdbImage } from '@/utils/helpers';
 
 export function CastCard({ cast }) {
 	return (
@@ -8,7 +8,7 @@ export function CastCard({ cast }) {
 			key={cast.id}
 		>
 			<LazyImage
-				src={getMoviePoster(cast.profile_path)}
+				src={getTmdbImage(cast.profile_path)}
 				alt={cast.name}
 				className="object-cover w-[100px] lg:max-w-[96px] rounded-full aspect-square"
 			/>
