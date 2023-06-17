@@ -1,6 +1,7 @@
 import { Badge } from '@/components';
 
 import React from 'react';
+import { Link, createSearchParams } from 'react-router-dom';
 
 export function MovieGenres({ movie }) {
 	return (
@@ -8,7 +9,16 @@ export function MovieGenres({ movie }) {
 			<h3 className="mb-2">Genres</h3>
 			<div className="flex gap-2 flex-wrap">
 				{movie.genres.map((genre) => (
-					<Badge key={genre.id}>{genre.name}</Badge>
+					<Link
+						key={genre.id}
+						to={{
+							pathname: `/movie/genre/${genre.id}`,
+							search: `${createSearchParams({ name: genre.name })}`,
+						}}
+						className="transition-opacity hover:opacity-80"
+					>
+						<Badge>{genre.name}</Badge>
+					</Link>
 				))}
 			</div>
 		</React.Fragment>
