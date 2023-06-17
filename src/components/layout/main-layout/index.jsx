@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 
 import {
+	Footer,
 	Navigation,
 	ScrollToTop,
 	SearchMovieForm,
@@ -46,6 +47,7 @@ export function MainLayout() {
 					<Outlet />
 				</main>
 			</React.Suspense>
+			<Footer />
 		</React.Fragment>
 	);
 }

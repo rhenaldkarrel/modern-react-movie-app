@@ -4,6 +4,7 @@ export * from './common/badge';
 export * from './common/buttons';
 export * from './common/scroll-to-top-button';
 export * from './common/lazy-load-image';
+export * from './common/footer';
 
 export * from './layout/main-layout';
 
