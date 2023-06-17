@@ -16,6 +16,7 @@ const { MovieDetail } = lazyImport(() => import('@/pages'), 'MovieDetail');
 const { MovieTrending } = lazyImport(() => import('@/pages'), 'MovieTrending');
 const { MovieSearch } = lazyImport(() => import('@/pages'), 'MovieSearch');
 const { MovieGenres } = lazyImport(() => import('@/pages'), 'MovieGenres');
+const { MovieFavorite } = lazyImport(() => import('@/pages'), 'MovieFavorite');
 const { GenreMovieList } = lazyImport(
 	() => import('@/pages'),
 	'GenreMovieList'
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
 					{
 						path: 'search',
 						element: <MovieSearch />,
+					},
+					{
+						path: 'favorite',
+						element: <MovieFavorite />,
 					},
 					{
 						path: 'genre',
