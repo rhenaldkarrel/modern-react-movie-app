@@ -7,11 +7,11 @@ import { FavoriteButton } from '../favorite-button';
 
 export function MovieCard({ movie }) {
 	return (
-		<div className="movie-card group relative cursor-pointer transition-all space-y-2 flex flex-col">
+		<div className="movie-card group relative cursor-pointer transition-all flex flex-col">
 			<FavoriteButton movie={movie} />
 			<Link
 				to={`/movie/${movie.id}`}
-				className="movie-card-link"
+				className="movie-card-link space-y-2"
 				title={movie.title}
 			>
 				<div className="movie-poster overflow-hidden rounded-lg grow">
