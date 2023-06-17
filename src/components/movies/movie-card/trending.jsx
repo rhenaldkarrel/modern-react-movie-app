@@ -18,7 +18,7 @@ export function TrendingMovieCard({ movie }) {
 					<LazyImage
 						src={getMoviePoster(movie.backdrop_path)}
 						alt={movie.title}
-						className="aspect-video w-full h-full min-w-[300px] object-cover overflow-hidden transition-all group-hover:scale-110"
+						className="aspect-video w-full h-full min-w-[300px] bg-center object-cover overflow-hidden transition-all group-hover:scale-110"
 					/>
 				</div>
 				<div className="movie-information">
