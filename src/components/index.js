@@ -13,3 +13,6 @@ export * from './movies/movie-card';
 export * from './movies/movie-list';
 export * from './movies/movie-detail-information';
 export * from './movies/search-form';
+
+export * from './credits/cast-card';
+export * from './credits/cast-list';
