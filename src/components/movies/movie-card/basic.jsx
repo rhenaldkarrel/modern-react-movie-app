@@ -18,7 +18,7 @@ export function MovieCard({ movie }) {
 					<LazyImage
 						src={getMoviePoster(movie.poster_path)}
 						alt={movie.title}
-						className="aspect-[9 / 16] w-full h-full object-cover overflow-hidden sm:max-w-[250px] transition-all group-hover:scale-110"
+						className="aspect-[9 / 16] w-full h-full object-cover overflow-hidden transition-all group-hover:scale-110"
 					/>
 				</div>
 				<div className="movie-information">
