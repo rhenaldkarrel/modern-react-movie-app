@@ -7,11 +7,11 @@ import { FavoriteButton } from '../favorite-button';
 
 export function MovieCard({ movie }) {
 	return (
-		<div className="movie-card group relative cursor-pointer transition-all flex flex-col">
+		<div className="movie-card group relative cursor-pointer transition-all">
 			<FavoriteButton movie={movie} />
 			<Link
 				to={`/movie/${movie.id}`}
-				className="movie-card-link space-y-2"
+				className="movie-card-link space-y-2 flex flex-col h-full"
 				title={movie.title}
 			>
 				<div className="movie-poster overflow-hidden rounded-lg grow">
@@ -19,6 +19,7 @@ export function MovieCard({ movie }) {
 						src={getMoviePoster(movie.poster_path)}
 						alt={movie.title}
 						className="aspect-[9 / 16] w-full h-full object-cover overflow-hidden transition-all group-hover:scale-110"
+						wrapperClassName="h-full"
 					/>
 				</div>
 				<div className="movie-information">
