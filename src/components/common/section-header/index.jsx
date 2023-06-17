@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export function Heading({ title, href }) {
+export function SectionHeader({ title, href }) {
 	return (
 		<header className="mb-4 flex items-end justify-between sm:mb-6">
 			<h2 className="capitalize">{title}</h2>

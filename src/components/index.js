@@ -5,6 +5,7 @@ export * from './common/buttons';
 export * from './common/scroll-to-top-button';
 export * from './common/lazy-load-image';
 export * from './common/footer';
+export * from './common/section-header';
 
 export * from './layout/main-layout';
 

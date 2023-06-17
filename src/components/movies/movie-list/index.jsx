@@ -4,13 +4,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 import { MovieCard, TrendingMovieCard } from '../movie-card';
-import { Heading } from './heading';
 import { sliceMovies } from '@/utils/helpers';
+import { SectionHeader } from '@/components';
 
 function BaseMovieList({ movies, title, href, limit = 10 }) {
 	return (
 		<React.Fragment>
-			<Heading title={title} href={href} />
+			<SectionHeader title={title} href={href} />
 			<div className="movies grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
 				{sliceMovies(movies, limit).map((movie) => (
 					<MovieCard movie={movie} key={movie.id} />
@@ -23,7 +23,7 @@ function BaseMovieList({ movies, title, href, limit = 10 }) {
 function TrendingMovieList({ movies, title, href, limit = 10 }) {
 	return (
 		<React.Fragment>
-			<Heading title={title} href={href} />
+			<SectionHeader title={title} href={href} />
 			<Swiper
 				touchEventsTarget="container"
 				className="cursor-grab"
