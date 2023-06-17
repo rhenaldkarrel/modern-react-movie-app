@@ -15,7 +15,7 @@ const NavItem = ({ children, to, label, className, ...rest }) => {
 			{...rest}
 		>
 			{children}
-			<span className="hidden sm:block capitalize">{label}</span>
+			<span className="hidden lg:block capitalize">{label}</span>
 		</NavLink>
 	);
 };

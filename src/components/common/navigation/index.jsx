@@ -2,7 +2,7 @@ import React from 'react';
 
 import { BsFillHouseDoorFill, BsSearch } from 'react-icons/bs';
 import { BiLogIn } from 'react-icons/bi';
-import { MdMovieCreation } from 'react-icons/md';
+import { MdMovieCreation, MdFavorite } from 'react-icons/md';
 
 import NavItem from './nav-item';
 import { useAuth } from '@/hooks';
@@ -23,6 +23,9 @@ export function Navigation() {
 			</NavItem>
 			<NavItem label="search" to="/movie/search">
 				<BsSearch className="text-3xl" />
+			</NavItem>
+			<NavItem label="favorite" to="/movie/favorite">
+				<MdFavorite className="text-3xl" />
 			</NavItem>
 			{!user ? (
 				<NavItem label="login" to="/login">
