@@ -5,6 +5,7 @@
 - React
 - React Router DOM
 - Redux Toolkit Query
+- Redux Persist
 - Eslint, Prettier, Lint Staged, Husky
 - Swiper
 - Supabase (for authentication)
@@ -19,10 +20,11 @@
   - Get upcoming movies
   - Get top rated movies
   - Get trending movies
-  - Get movies by genre
+  - Get movies by genre (filter movie by genre)
   - Search movies
   - Get movie detail
 - Infinite scroll
+- Add to favorite movies using Redux Persist
 - Authentication
   - Login
   - Register
@@ -72,13 +74,6 @@
 | ![Example Login Page](./screenshots/example-login.png) |
 | :----------------------------------------------------: |
 |                  _Example Login Page_                  |
-
-## To Do List
-
-Due to limited time. Lol. I am a MVP (Minimum Viable Product) guy, so there are still several things need to add. 😂
-
-- [ ] Add filter functionality
-- [ ] Add movies to favorite
 
 ## License
 
