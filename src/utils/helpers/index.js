@@ -9,12 +9,12 @@ export function getYear(date) {
 	}
 }
 
-export function sliceArray(movies, limit) {
+export function sliceArray(arr, limit) {
 	if (limit === 0) {
-		return movies;
+		return arr;
 	}
 
-	return movies.slice(0, limit);
+	return arr.slice(0, limit);
 }
 
 export function lazyImport(factory, name) {
