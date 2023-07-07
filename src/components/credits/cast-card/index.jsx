@@ -10,7 +10,7 @@ export function CastCard({ cast }) {
 			<LazyImage
 				src={getTmdbImage(cast.profile_path)}
 				alt={cast.name}
-				className="object-cover w-[100px] lg:max-w-[96px] rounded-full aspect-square"
+				className="object-cover min-w-[100px] max-w-[100px] rounded-full aspect-square"
 			/>
 			<div className="text-left lg:w-1/2">
 				<h3 className="text-base truncate">{cast.name}</h3>
