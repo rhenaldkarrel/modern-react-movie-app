@@ -1,7 +1,7 @@
 import React from 'react';
 import { useGetMoviesByQueryQuery } from '@/app/services/movies';
 import { useSearchParams } from 'react-router-dom';
-import { MovieList, Spinner } from '@/components';
+import { MovieList, MovieSkeleton, Spinner, TextSkeleton } from '@/components';
 import { useInfiniteScroll } from '@/hooks';
 
 export function MovieSearch() {
@@ -10,7 +10,7 @@ export function MovieSearch() {
 
 	const [page, setPage] = React.useState(1);
 
-	const { data, isFetching } = useGetMoviesByQueryQuery({
+	const { data, isFetching, isLoading } = useGetMoviesByQueryQuery({
 		page,
 		query,
 	});
@@ -24,6 +24,15 @@ export function MovieSearch() {
 		page,
 		setPage,
 	});
+
+	if (isLoading) {
+		return (
+			<div className="space-y-4">
+				<TextSkeleton height={36} width={234} />
+				<MovieSkeleton amount={10} />
+			</div>
+		);
+	}
 
 	return (
 		<React.Fragment>
