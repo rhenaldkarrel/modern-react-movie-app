@@ -2,7 +2,7 @@ import React from 'react';
 import { useSearchParams, useParams } from 'react-router-dom';
 
 import { useGetMoviesByGenreQuery } from '@/app/services/movies';
-import { MovieList, Spinner } from '@/components';
+import { GenreSkeleton, MovieList, Spinner } from '@/components';
 import { useInfiniteScroll } from '@/hooks';
 
 export function GenreMovieList() {
@@ -26,6 +26,10 @@ export function GenreMovieList() {
 		page,
 		setPage,
 	});
+
+	if (isFetching) {
+		return <GenreSkeleton amount={19} />;
+	}
 
 	return (
 		<React.Fragment>
