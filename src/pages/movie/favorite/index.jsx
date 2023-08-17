@@ -14,7 +14,7 @@ export function MovieFavorite() {
 						<h3>You have no favorited movies.</h3>
 					</header>
 					<PrimaryAnchorButton href="/movie/search">
-						Let&apos;s find one!``
+						Let&apos;s find one!
 					</PrimaryAnchorButton>
 				</div>
 			)}
