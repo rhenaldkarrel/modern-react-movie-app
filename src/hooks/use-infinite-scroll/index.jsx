@@ -3,7 +3,7 @@ import React from 'react';
 export function useInfiniteScroll({ totalPages, page, setPage, isFetching }) {
 	React.useEffect(() => {
 		const onScroll = () => {
-			if (totalPages === page) return;
+			if (page >= totalPages) return;
 
 			const scrolledToBottom =
 				window.innerHeight + window.scrollY >= document.body.offsetHeight;
