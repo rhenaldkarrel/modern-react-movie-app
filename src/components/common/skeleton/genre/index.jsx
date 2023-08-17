@@ -11,5 +11,7 @@ export function GenreSkeleton({ amount = 1, className }) {
 		<Skeleton key={index} />
 	));
 
-	return <div className={clsx('flex flex-wrap', className)}>{skeletons}</div>;
+	return (
+		<div className={clsx('flex flex-wrap gap-4', className)}>{skeletons}</div>
+	);
 }

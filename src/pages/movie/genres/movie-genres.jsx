@@ -1,9 +1,14 @@
 import { Link, createSearchParams } from 'react-router-dom';
 
 import { useGetMovieGenresQuery } from '@/app/services/genres';
+import { GenreSkeleton } from '@/components';
 
 export function MovieGenres() {
-	const { data } = useGetMovieGenresQuery();
+	const { data, isFetching } = useGetMovieGenresQuery();
+
+	if (isFetching) {
+		return <GenreSkeleton amount={19} />;
+	}
 
 	const genres = data?.genres ?? [];
 

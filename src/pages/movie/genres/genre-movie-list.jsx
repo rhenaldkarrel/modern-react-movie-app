@@ -2,7 +2,7 @@ import React from 'react';
 import { useSearchParams, useParams } from 'react-router-dom';
 
 import { useGetMoviesByGenreQuery } from '@/app/services/movies';
-import { GenreSkeleton, MovieList, Spinner } from '@/components';
+import { MovieList, MovieSkeleton, Spinner, TextSkeleton } from '@/components';
 import { useInfiniteScroll } from '@/hooks';
 
 export function GenreMovieList() {
@@ -12,7 +12,7 @@ export function GenreMovieList() {
 
 	const [page, setPage] = React.useState(1);
 
-	const { data, isFetching } = useGetMoviesByGenreQuery({
+	const { data, isFetching, isLoading } = useGetMoviesByGenreQuery({
 		with_genres: id,
 		page,
 	});
@@ -27,8 +27,13 @@ export function GenreMovieList() {
 		setPage,
 	});
 
-	if (isFetching) {
-		return <GenreSkeleton amount={19} />;
+	if (isLoading) {
+		return (
+			<div className="space-y-4">
+				<TextSkeleton height={36} width={234} />
+				<MovieSkeleton amount={10} />
+			</div>
+		);
 	}
 
 	return (
