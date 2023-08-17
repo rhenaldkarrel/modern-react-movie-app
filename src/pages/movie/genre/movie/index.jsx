@@ -1,31 +1,51 @@
-import { Link, createSearchParams } from 'react-router-dom';
+import React from 'react';
+import { useSearchParams, useParams } from 'react-router-dom';
 
-import { useGetMovieGenresQuery } from '@/app/services/genres';
-import { GenreSkeleton } from '@/components';
+import { useGetMoviesByGenreQuery } from '@/app/services/movies';
+import { MovieList, MovieSkeleton, Spinner, TextSkeleton } from '@/components';
+import { useInfiniteScroll } from '@/hooks';
 
-export function MovieGenres() {
-	const { data, isFetching } = useGetMovieGenresQuery();
+export function GenreMovieList() {
+	const { id } = useParams();
+	const [searchParams] = useSearchParams();
+	const genreName = searchParams.get('name');
 
-	if (isFetching) {
-		return <GenreSkeleton amount={19} />;
+	const [page, setPage] = React.useState(1);
+
+	const { data, isFetching, isLoading } = useGetMoviesByGenreQuery({
+		with_genres: id,
+		page,
+	});
+
+	const movies = data?.results ?? [];
+	const totalPages = data?.total_pages;
+
+	useInfiniteScroll({
+		isFetching,
+		totalPages,
+		page,
+		setPage,
+	});
+
+	if (isLoading) {
+		return (
+			<div className="space-y-4">
+				<TextSkeleton height={36} width={234} />
+				<MovieSkeleton amount={10} />
+			</div>
+		);
 	}
 
-	const genres = data?.genres ?? [];
-
 	return (
-		<section className="mb-10 flex flex-wrap justify-between">
-			{genres.map((genre) => (
-				<Link
-					to={{
-						pathname: `/movie/genre/${genre.id}`,
-						search: `${createSearchParams({ name: genre.name })}`,
-					}}
-					key={genre.id}
-					className="m-2 flex h-44 w-44 grow items-center justify-center rounded-lg p-8 text-center text-xl font-medium even:bg-slate-700 odd:bg-indigo-600 hover:opacity-70 transition-all"
-				>
-					{genre.name}
-				</Link>
-			))}
-		</section>
+		<React.Fragment>
+			<section className="now-playing-movies">
+				<MovieList movies={movies} title={genreName} limit={0} />
+				{isFetching && (
+					<div className="w-full flex justify-center py-8">
+						<Spinner />
+					</div>
+				)}
+			</section>
+		</React.Fragment>
 	);
 }
