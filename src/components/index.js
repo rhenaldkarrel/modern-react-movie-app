@@ -16,3 +16,5 @@ export * from './movies/search-form';
 
 export * from './credits/cast-card';
 export * from './credits/cast-list';
+
+export * from './common/skeleton';

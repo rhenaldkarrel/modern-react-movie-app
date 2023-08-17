@@ -7,22 +7,48 @@ import {
 	useGetTrendingMoviesQuery,
 	useGetUpcomingMoviesQuery,
 } from '@/app/services/movies';
-import { MovieList } from '@/components';
+import {
+	MovieList,
+	MovieSkeleton,
+	TextSkeleton,
+	TrendingMovieSkeleton,
+} from '@/components';
 
 export function Home() {
-	const { data: popularMoviesData } = useGetPopularMoviesQuery({ page: 1 });
-	const { data: nowPlayingMoviesData } = useGetNowPlayingMoviesQuery({
-		page: 1,
-	});
-	const { data: topRatedMoviesData } = useGetTopRatedMoviesQuery({
-		page: 1,
-	});
-	const { data: upcomingMoviesData } = useGetUpcomingMoviesQuery({
-		page: 1,
-	});
-	const { data: trendingMoviesData } = useGetTrendingMoviesQuery({
-		page: 1,
-	});
+	const { data: popularMoviesData, isFetching: isPopularMoviesFetching } =
+		useGetPopularMoviesQuery({ page: 1 });
+	const { data: nowPlayingMoviesData, isFetching: isNowPlayingMoviesFetching } =
+		useGetNowPlayingMoviesQuery({
+			page: 1,
+		});
+	const { data: topRatedMoviesData, isFetching: isTopRatedMoviesFetching } =
+		useGetTopRatedMoviesQuery({ page: 1 });
+	const { data: upcomingMoviesData, isFetching: isUpcomingMoviesFetching } =
+		useGetUpcomingMoviesQuery({ page: 1 });
+	const { data: trendingMoviesData, isFetching: isTrendingMoviesFetching } =
+		useGetTrendingMoviesQuery({ page: 1 });
+
+	const isLoading =
+		isPopularMoviesFetching ||
+		isNowPlayingMoviesFetching ||
+		isTopRatedMoviesFetching ||
+		isUpcomingMoviesFetching ||
+		isTrendingMoviesFetching;
+
+	if (isLoading) {
+		return (
+			<div className="space-y-12">
+				<div className="space-y-4">
+					<TextSkeleton height={36} width={234} />
+					<TrendingMovieSkeleton amount={4} />
+				</div>
+				<div className="space-y-4">
+					<TextSkeleton height={36} width={234} />
+					<MovieSkeleton amount={10} />
+				</div>
+			</div>
+		);
+	}
 
 	const popularMovies = popularMoviesData?.results ?? [];
 	const nowPlayingMovies = nowPlayingMoviesData?.results ?? [];
