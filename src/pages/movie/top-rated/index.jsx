@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { useGetTopRatedMoviesQuery } from '@/app/services/movies';
-import { MovieList, Spinner } from '@/components';
+import { MovieList, MovieSkeleton, Spinner, TextSkeleton } from '@/components';
 import { useInfiniteScroll } from '@/hooks';
 
 export function MovieTopRated() {
 	const [page, setPage] = React.useState(1);
-	const { data, isFetching } = useGetTopRatedMoviesQuery({ page });
+	const { data, isFetching, isLoading } = useGetTopRatedMoviesQuery({ page });
 
 	const topRatedMovies = data?.results ?? [];
 	const totalPages = data?.total_pages;
@@ -17,6 +17,15 @@ export function MovieTopRated() {
 		page,
 		setPage,
 	});
+
+	if (isLoading) {
+		return (
+			<div className="space-y-4">
+				<TextSkeleton height={36} width={234} />
+				<MovieSkeleton amount={10} />
+			</div>
+		);
+	}
 
 	return (
 		<React.Fragment>
